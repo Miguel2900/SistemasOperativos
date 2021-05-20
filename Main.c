@@ -72,7 +72,7 @@ int main(int argc, char** argv)
 	float timeBank[4];
 
 	//Parallel product matrix calc
-	if (clock_gettime(CLOCK_REALTIME, &t0) != 0)
+	if (clock_gettime(CLOCK_MONOTONIC, &t0) != 0)
 	{
 		printf("Error calling clock_gettime for t0\n");
 		exit(EXIT_FAILURE);
@@ -80,7 +80,7 @@ int main(int argc, char** argv)
 	
 	ompParallelMatrixMult(&C, A, B, sizeMat);
 
-	if (clock_gettime(CLOCK_REALTIME, &t1) != 0)
+	if (clock_gettime(CLOCK_MONOTONIC, &t1) != 0)
 	{
 		printf("Error calling clock_gettime for t1\n");
 		exit(EXIT_FAILURE);
@@ -96,7 +96,7 @@ int main(int argc, char** argv)
 
 
 	//Praduct matrix calc
-	if (clock_gettime(CLOCK_REALTIME, &t0) != 0)
+	if (clock_gettime(CLOCK_MONOTONIC, &t0) != 0)
 	{
 		printf("Error calling clock_gettime for t0\n");
 		exit(EXIT_FAILURE);
@@ -104,7 +104,7 @@ int main(int argc, char** argv)
 	
 	matrixMult(&C, A, B, sizeMat);
 
-	if (clock_gettime(CLOCK_REALTIME, &t1) != 0)
+	if (clock_gettime(CLOCK_MONOTONIC, &t1) != 0)
 	{
 		printf("Error calling clock_gettime for t1\n");
 		exit(EXIT_FAILURE);
@@ -120,7 +120,7 @@ int main(int argc, char** argv)
 	
 	//Parallel max value in matrix
 
-	if (clock_gettime(CLOCK_REALTIME, &t0) != 0)
+	if (clock_gettime(CLOCK_MONOTONIC, &t0) != 0)
 	{
 		printf("Error calling clock_gettime for t0\n");
 		exit(EXIT_FAILURE);
@@ -128,7 +128,7 @@ int main(int argc, char** argv)
 	
 	ompParallelMatrixMax(&count, A, sizeMat);
 
-	if (clock_gettime(CLOCK_REALTIME, &t1) != 0)
+	if (clock_gettime(CLOCK_MONOTONIC, &t1) != 0)
 	{
 		printf("Error calling clock_gettime for t1\n");
 		exit(EXIT_FAILURE);
@@ -143,7 +143,7 @@ int main(int argc, char** argv)
 
 	//Max value in matrix
 
-	if (clock_gettime(CLOCK_REALTIME, &t0) != 0)
+	if (clock_gettime(CLOCK_MONOTONIC, &t0) != 0)
 	{
 		printf("Error calling clock_gettime for t0\n");
 		exit(EXIT_FAILURE);
@@ -151,7 +151,7 @@ int main(int argc, char** argv)
 	
 	matrixMax(&count, A, sizeMat);
 
-	if (clock_gettime(CLOCK_REALTIME, &t1) != 0)
+	if (clock_gettime(CLOCK_MONOTONIC, &t1) != 0)
 	{
 		printf("Error calling clock_gettime for t1\n");
 		exit(EXIT_FAILURE);
