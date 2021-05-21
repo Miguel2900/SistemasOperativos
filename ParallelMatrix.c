@@ -206,7 +206,7 @@ int ompParallelMatrixMax(long double* counter, long double* M, int sizeMat, int 
 	*counter = 0;
 	chunk = (int)round(sizeMat / numThreads);
 
-	#pragma omp parallel for private(element) schedule(dynamic, chunk)
+	#pragma omp parallel for private(element, counter) schedule(dynamic, chunk)
 	for(element = 0; element < totalElem; element++)
 	{
 		*counter =  *(M + element) > *counter ? *(M + element) : *counter;
