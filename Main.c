@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 	long double* B = NULL;
 	long double* C = NULL;
 	long double count;
-	int sizeMat = 100;
+	int sizeMat = 1000;
 	int row,col;
 	
 	//Variables for thread management and time
@@ -78,7 +78,7 @@ int main(int argc, char** argv)
 		exit(EXIT_FAILURE);
 	}
 	
-	ompParallelMatrixMult(&C, A, B, sizeMat, numThreads);
+	ompParallelMatrixMult(&C, A, B, sizeMat);
 
 	if (clock_gettime(CLOCK_MONOTONIC, &t1) != 0)
 	{
@@ -126,7 +126,7 @@ int main(int argc, char** argv)
 		exit(EXIT_FAILURE);
 	}
 	
-	ompParallelMatrixMax(&count, A, sizeMat, numThreads);
+	ompParallelMatrixMax(&count, A, sizeMat);
 
 	if (clock_gettime(CLOCK_MONOTONIC, &t1) != 0)
 	{
@@ -166,7 +166,7 @@ int main(int argc, char** argv)
 
 
 	printf("-------------------------------------------------------\n");
-	printf("|   Funcion     |    T Paralelo    |     T Normal     |\n");
+	printf("|   Function     |    Parallel T    |     NormalT     |\n");
 	printf("-------------------------------------------------------\n");
 	printf("| Multipicacion |     %f     |     %f     |\n",timeBank[0], timeBank[1]);
 	printf("| Valor maximo  |     %f     |     %f     |\n",timeBank[2], timeBank[3]);

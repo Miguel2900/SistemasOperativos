@@ -138,9 +138,10 @@ int matrixMult(long double** result, long double* A, long double* B, int sizeMat
 }
 
 
-int ompParallelMatrixMult(long double** result, long double* A, long double* B, int sizeMat, int numThreads)
+int ompParallelMatrixMult(long double** result, long double* A, long double* B, int sizeMat)
 {
 	int element, totalElem, rowID, columnID;
+	int numThreads = getNumberOfCPUs();
 
 	long double row[sizeMat], column[sizeMat];
 	
@@ -161,7 +162,7 @@ int ompParallelMatrixMult(long double** result, long double* A, long double* B, 
 		rowID = element / sizeMat;
 		columnID = element % sizeMat;
 		*(*result + element) = 0;
-		//#pragma omp parallel for 
+		#pragma omp parallel for private(i)
 		for (i = 0; i < sizeMat; i++)
 		{				
 			row[i] = *(A + i + (sizeMat * rowID));
@@ -193,9 +194,11 @@ int matrixMax(long double* counter, long double* M, int sizeMat)
 	return EXIT_SUCCESS;
 }
 
-int ompParallelMatrixMax(long double* counter, long double* M, int sizeMat, int numThreads)
+int ompParallelMatrixMax(long double* counter, long double* M, int sizeMat)
 {
 	int element, totalElem, chunk;
+	int numThreads = getNumberOfCPUs();
+	long double count = 0;
 	if(!counter || !M)
 	{
 		printf("Error in input pointers\n");
@@ -203,14 +206,13 @@ int ompParallelMatrixMax(long double* counter, long double* M, int sizeMat, int 
 	}
 	
 	totalElem = sizeMat * sizeMat;
-	*counter = 0;
 	chunk = (int)round(sizeMat / numThreads);
 
-	#pragma omp parallel for private(element, counter) schedule(dynamic, chunk)
+	#pragma omp parallel for shared(count) private(element) schedule(dynamic, chunk)
 	for(element = 0; element < totalElem; element++)
 	{
-		*counter =  *(M + element) > *counter ? *(M + element) : *counter;
+		count =  *(M + element) > count ? *(M + element) : count;
 	}
-	
+	*counter = count;
 	return EXIT_SUCCESS;
 }
