@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 	long double* B = NULL;
 	long double* C = NULL;
 	long double count;
-	int sizeMat = 1000;
+	int sizeMat = 100;
 	int row,col;
 	
 	//Variables for thread management and time
