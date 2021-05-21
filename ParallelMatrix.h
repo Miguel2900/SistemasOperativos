@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
+#include <math.h>
 
 int getNumberOfCPUs();
 int checkSumAll(long double*, long double*, int);
@@ -24,9 +25,9 @@ int matrixSum(long double**, long double*, long double*, int);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int matrixMult(long double**, long double*, long double*, int);
-int ompParallelMatrixMult(long double**, long double*, long double*, int);
+int ompParallelMatrixMult(long double**, long double*, long double*, int, int);
 int matrixMax(long double*, long double*, int);
-int ompParallelMatrixMax(long double*, long double*, int);
+int ompParallelMatrixMax(long double*, long double*, int, int);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

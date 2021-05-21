@@ -78,7 +78,7 @@ int main(int argc, char** argv)
 		exit(EXIT_FAILURE);
 	}
 	
-	ompParallelMatrixMult(&C, A, B, sizeMat);
+	ompParallelMatrixMult(&C, A, B, sizeMat, numThreads);
 
 	if (clock_gettime(CLOCK_MONOTONIC, &t1) != 0)
 	{
@@ -126,7 +126,7 @@ int main(int argc, char** argv)
 		exit(EXIT_FAILURE);
 	}
 	
-	ompParallelMatrixMax(&count, A, sizeMat);
+	ompParallelMatrixMax(&count, A, sizeMat, numThreads);
 
 	if (clock_gettime(CLOCK_MONOTONIC, &t1) != 0)
 	{
