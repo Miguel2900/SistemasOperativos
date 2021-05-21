@@ -1,6 +1,8 @@
-Mayra Antonieta Hernández Galvan
-Miguel Angel Ledesma Ortiz
-André Jesús Macías Rodriguez
-Anibal Emlio Martel Chavez
-Aramis Quiroz Tapia
-Liam Daniel Villa Vazquez
+# Equipo: Noble team
+## Integrantes
+1. Mayra Antonieta Hernández Galvan
+2. Miguel Angel Ledesma Ortiz
+3. André Jesús Macías Rodriguez
+4. Anibal Emlio Martel Chavez
+5. Aramis Quiroz Tapia
+6. Liam Daniel Villa Vazquez
